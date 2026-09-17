@@ -1,0 +1,213 @@
+---
+title: "Intégrer les séquences ADN aux données d'occurrence pour combler les lacunes du suivi de la biodiversité"
+author: "Vissault, Fuster, Gravel, Brochu, Langlois"
+format:
+  revealjs:
+    slide-number: true
+    footer: "FACET (en préparation)"
+    theme: default
+    css: style.css
+---
+
+## Résumé {.smaller}
+
+::: {.callout-note}
+Slide à compléter — résumé en une diapo une fois les résultats finalisés.
+:::
+
+# Introduction
+
+## Le problème {.smaller}
+
+Répartition inégale des données d'observation de biodiversité : trous et information souvent insuffisante pour faire du suivi.
+
+**Biais documentés**
+
+- Occurrence (GBIF — voir Garcia-Rosello 2023)
+- Génétique
+- Interactions (Poisot, Brimacombe)
+- Traits
+
+::: {.notes}
+Ces biais sous-tendent une série de *biodiversity shortfalls*.
+:::
+
+## L'intégration de données comme solution {.smaller}
+
+- Données de présence et d'abondance pour les modèles de distribution
+- Intégration des données de mouvement pour la cartographie
+- Utilisation de données phylogénétiques pour l'imputation de traits
+- Combinaison des données génomiques aux données d'occurrence : une voie naturelle
+- Déjà de nombreuses observations dans GBIF issues de campagnes d'échantillonnage eDNA
+
+## Avantages potentiels de l'ADNe {.smaller}
+
+- Méthodologie d'identification distincte
+- Réduction du fardeau de l'expertise taxonomique
+- Capacité d'échantillonnage accrue (si l'animal est présent, il est détecté — réduit les fausses absences)
+- Empreinte spatiale (ex. ruisseau) et temporelle accrue
+
+## Limites des données ADNe {.smaller}
+
+- Librairies de référence incomplètes
+- Assignations erronées
+- Biais géographiques
+- Contaminations
+- Imprécision spatiale (localisation) et temporelle (date)
+
+## Objectifs {.smaller}
+
+1. Évaluer la complémentarité des séquences ADN pour compléter les données de biodiversité
+2. Déterminer l'ampleur des trous dans les assignations et prioriser le travail de référencement
+3. Évaluer la qualité des séquences disponibles pour le suivi de la biodiversité
+
+# Matériel et méthodes
+
+## Approche {.smaller}
+
+::: {.callout-note}
+Section à détailler par SV.
+:::
+
+- Sources de données : Atlas (occurrences), NCBI et BOLD (séquences)
+- **Attention** : exclure de l'analyse les espèces domestiques, ainsi que les conflits liés aux spécimens de musées, herbiers, etc.
+
+# Résultats
+
+## Résultats des requêtes {.smaller}
+
+**Tableau 1.** Résumé des caractéristiques des observations disponibles sur Atlas
+
+::: {.callout-note}
+Tableau à insérer.
+:::
+
+**Tableau 2.** Résumé des caractéristiques des séquences disponibles sur NCBI et BOLD
+
+::: {.callout-note}
+Tableau à insérer.
+:::
+
+## O1 — Complémentarité entre les sources de données {.smaller}
+
+Sommaire des « nouvelles » observations (combinaison espèce-pixel 5km)
+
+### Taxonomique
+
+**Figure 1.** Répartition taxonomique des observations directes et des séquences
+
+**Figure 2.** Nombre d'observations Atlas vs nombre de séquences — permet de documenter si les mêmes biais en faveur des espèces abondantes existent
+
+::: {.callout-note}
+Figures à insérer.
+:::
+
+## O1 — Complémentarité (suite) {.smaller}
+
+### Spatiale
+
+**Figure 3.** Localisation des observations Atlas / Séquences
+
+### Temporelle
+
+**Figure 4.** Comparaison des années d'observation Atlas / Séquences
+
+::: {.callout-note}
+Figures à insérer.
+:::
+
+## O1 — Suivi des espèces menacées {.smaller}
+
+**Tableau 3.** Sommaire de la couverture pour les EMV au Québec et au Canada
+
+::: {.callout-note}
+Tableau à insérer.
+:::
+
+## O2 — Qualité des données de référence {.smaller}
+
+**Figure 5.** Répartition de la profondeur de séquençage par groupe taxonomique
+
+::: {.callout-note}
+Figure à insérer.
+:::
+
+## O3 — Qualité des assignations {.smaller}
+
+**Figure 6.** Localisation des séquences pour différentes espèces
+
+**Tableau 4.** Description des données par marqueur
+
+**Tableau 5.** Qualité des séquences
+
+::: {.callout-note}
+Figure et tableaux à insérer.
+:::
+
+# Discussion
+
+## Résumé des observations pertinentes {.smaller}
+
+- Ajout significatif d'observations
+- Profondeur surprenante de la librairie de référence pour de nombreux groupes, mais souvent 1-2 marqueurs — très variable sur le génome complet
+- Biais spatial similaire, moins prononcé pour la taxonomie
+- Capacité de bonifier les groupes sous-documentés
+- Énormément d'hétérogénéité dans la qualité — besoin de standardiser les approches et d'avoir plusieurs marqueurs
+- Possibilité d'améliorer la qualité en croisant l'information sur les occurrences avec le séquençage : c'est là tout l'intérêt de la fusion des sources de données — des synergies sont possibles
+- Besoin d'un processus de sélection des séquences pour l'harmonisation BOLD-Distill
+- Très mauvaise connaissance de la *dark diversity* : ce qui n'est pas assigné, ou mal assigné
+
+## Complémentarité et capacité à bonifier {.smaller}
+
+::: {.callout-note}
+Section à détailler par AF & DG.
+:::
+
+## Vers une nouvelle plateforme {.smaller}
+
+Design d'une nouvelle plateforme pour intégrer les données d'occurrence et de génomique
+
+## Contrôle de la qualité {.smaller}
+
+::: {.callout-note}
+Section à détailler par AF & DG.
+:::
+
+## Enjeux avec les requêtes {.smaller}
+
+- Requêtes par unité taxonomique : on assume que le BLAST est correct
+- Requêtes spatiales : même hypothèse implicite
+- Comment interroger les espèces non assignées pour une région donnée ?
+- Quelle est la qualité des données spatiales ?
+- Problèmes potentiels : spécimens de musées, centroïdes
+
+## Valorisation des collections {.smaller}
+
+- Accès à une grande quantité d'information de haute qualité pour les bases de référence
+- Accès à des observations en profondeur temporelle
+- Projets de recherche inattendus (ex. nématodes)
+
+## Dark diversity {.smaller}
+
+Que faire avec les séquences qui ne sont pas assignées ?
+
+## La valeur de l'information spatiale {.smaller}
+
+Exemple : assignations contraintes spatialement
+
+## Résolution : le problème des sous-espèces {.smaller}
+
+- Peu de marqueurs captent cette variation
+- Besoin de séquençage du génome complet et de qPCR pour capter cette variabilité
+
+## Nouvelles méthodes à venir {.smaller}
+
+- Échantillonnage d'ADN aéroporté
+- Autres méthodes d'assignation (traitement d'image ADN, Medeiros et al. 2025, *NEE*)
+- Intelligence artificielle
+
+# Merci
+
+## Contact {.smaller}
+
+Vissault · Fuster · Gravel · Brochu · Langlois
