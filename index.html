@@ -9,8 +9,9 @@
 <link href="index_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.10.18">
 
-  <meta name="author" content="Vissault, Fuster, Gravel, Brochu, Langlois">
-  <title>Intégrer les séquences ADN aux données d’occurrence pour combler les lacunes du suivi de la biodiversité</title>
+  <meta name="author" content="Steve Vissault">
+  <meta name="author" content="Collaborateurs : Fuster, Gravel, Brochu, Langlois">
+  <title>Portrait génomique de la Biodiversité du Québec</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -35,8 +36,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-2740581606dc327e82f18f789b69d8a0.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-23c84984b76d07920c9ce979320693d2.css">
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -134,12 +134,23 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Intégrer les séquences ADN aux données d’occurrence pour combler les lacunes du suivi de la biodiversité</h1>
+  <h1 class="title">Portrait génomique de la Biodiversité du Québec</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Vissault, Fuster, Gravel, Brochu, Langlois
+Steve Vissault
+</div>
+        <p class="quarto-title-affiliation">
+            INRS
+          </p>
+        <p class="quarto-title-affiliation">
+            Genovalia / Université Laval
+          </p>
+    </div>
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Collaborateurs : Fuster, Gravel, Brochu, Langlois
 </div>
 </div>
 </div>
@@ -162,22 +173,266 @@ Vissault, Fuster, Gravel, Brochu, Langlois
 </div>
 </section>
 <section>
-<section id="introduction" class="title-slide slide level1 center">
+<section id="introduction" class="title-slide slide level1 center" data-background-color="#17003C">
 <h1>Introduction</h1>
 
 </section>
-<section id="le-problème" class="slide level2 smaller">
-<h2>Le problème</h2>
-<p>Répartition inégale des données d’observation de biodiversité : trous et information souvent insuffisante pour faire du suivi.</p>
-<p><strong>Biais documentés</strong></p>
+<section id="quest-ce-que-ladne-et-le-problème" class="slide level2 smaller">
+<h2>Qu’est-ce que l’ADNe ? Et le problème ?</h2>
+<p>L’ADN environnemental (ADNe) : matériel génétique collecté directement dans l’environnement (eau, sol, air, etc.) sans avoir à capturer ou isoler l’organisme. <strong>Metabarcoding</strong> — détection simultanée de plusieurs taxons à partir d’un marqueur commun <em>(approche retenue ici)</em>.</p>
+<p><strong>Le problème</strong> : répartition inégale des données de biodiversité (occurrence, génétique, interactions, traits) — trous souvent insuffisants pour faire du suivi. L’intégration de l’ADNe aux données d’occurrence est une voie naturelle pour les combler.</p>
+</section>
+<section id="avantages-et-limites-de-ladne" class="slide level2 smaller">
+<h2>Avantages et limites de l’ADNe</h2>
+<p><strong>Avantages</strong> — réduit le fardeau taxonomique, détecte si présent (moins de fausses absences), empreinte spatiale et temporelle accrue.</p>
+<p><strong>Limites</strong> — librairies de référence incomplètes, assignations erronées, biais géographiques, contaminations, imprécision spatiale/temporelle.</p>
+<p>La qualité dépend de trois maillons : échantillonnage, laboratoire, <strong>analyse bioinformatique</strong> — c’est ce dernier maillon (qualité des bases de référence) qui porte les librairies incomplètes et les assignations erronées (7 classes de biais documentées, Keck et al.&nbsp;2022).</p>
+</section>
+<section id="objectifs" class="slide level2 smaller">
+<h2>Objectifs</h2>
+<p>Au Québec : disposons-nous d’une bonne couverture génomique pour les taxons connus, et ces séquences comblent-elles les biais d’échantillonnage traditionnels ?</p>
+<ol type="1">
+<li>Évaluer la complémentarité des séquences ADN pour compléter les données de biodiversité</li>
+<li>Déterminer l’ampleur des trous dans les assignations et prioriser le travail de référencement</li>
+<li>Évaluer la qualité des séquences disponibles pour le suivi de la biodiversité</li>
+</ol>
+</section></section>
+<section>
+<section id="matériel-et-méthodes" class="title-slide slide level1 center" data-background-color="#17003C">
+<h1>Matériel et méthodes</h1>
+
+</section>
+<section id="hypothèses-de-travail" class="slide level2 smaller">
+<h2>Hypothèses de travail</h2>
+<p>Deux affirmations à étayer par la littérature :</p>
+<ol type="1">
+<li>Le choix du pipeline bioinformatique n’influence pas significativement les résultats</li>
+<li>La qualité des bases de données de référence, elle, les influence significativement</li>
+</ol>
+</section>
+<section id="approche" class="slide level2 smaller">
+<h2>Approche</h2>
+<p>Pipeline reproductible (package R <code>QCGenomLandscape</code>, orchestré avec <a href="https://books.ropensci.org/targets/"><code>targets</code></a>)</p>
 <ul>
-<li>Occurrence (GBIF — voir Garcia-Rosello 2023)</li>
-<li>Génétique</li>
-<li>Interactions (Poisot, Brimacombe)</li>
-<li>Traits</li>
+<li><strong>BDQC</strong> — liste taxonomique de référence, ~23 700 espèces observées au Québec</li>
+<li><strong>BOLD Systems</strong> — barcodes ADN (COI principalement), géoréférencés (<code>geo:province/state:Quebec</code>)</li>
+<li><strong>NCBI Nucleotide/Genome</strong> — séquences et génomes assemblés par espèce × marqueur (amorces Keck et al.&nbsp;2022)</li>
+<li><strong>COSEPAC / LEMV</strong> — statuts de conservation (Canada / Québec)</li>
+<li><strong>Atlas de Biodiversité Québec</strong> — occurrences « traditionnelles » (eBird, iNaturalist, relevés, spécimens)</li>
 </ul>
+<p><strong>Attention</strong> : espèces domestiques exclues ; bactéries et protozoaires hors périmètre (couverture eDNA des espèces macroscopiques)</p>
+
+<aside><div>
+<p>Détail complet : <code>vignettes/approche-methodologique.Rmd</code>, dépôt <code>QCGenomLandscape</code></p>
+</div></aside></section>
+<section id="schéma-intégrateur-de-la-méthode" class="slide level2 smaller">
+<h2>Schéma intégrateur de la méthode</h2>
+<div style="text-align:center; margin-top: 0.5em;">
+<svg viewbox="0 0 1500 400" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; font-family: 'Source Sans 3', sans-serif;">
+  <defs>
+    <marker id="arrow" viewbox="0 0 10 10" refx="8" refy="5" markerwidth="7" markerheight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#563C9A"></path>
+    </marker>
+    <marker id="arrowlight" viewbox="0 0 10 10" refx="8" refy="5" markerwidth="7" markerheight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#9478F8"></path>
+    </marker>
+  </defs>
+
+  <!-- ================= SOURCES DE DONNEES (cylindres) ================= -->
+  <g fill="#FFF3C0" stroke="#563C9A" stroke-width="1.5">
+    <path d="M10,18 a80,10 0 0 1 160,0 v46 a80,10 0 0 1 -160,0 z"></path>
+    <path d="M190,18 a80,10 0 0 1 160,0 v46 a80,10 0 0 1 -160,0 z"></path>
+    <path d="M450,18 a110,10 0 0 1 220,0 v46 a110,10 0 0 1 -220,0 z"></path>
+    <path d="M770,18 a80,10 0 0 1 160,0 v46 a80,10 0 0 1 -160,0 z"></path>
+    <path d="M950,18 a80,10 0 0 1 160,0 v46 a80,10 0 0 1 -160,0 z"></path>
+    <path d="M1150,18 a80,10 0 0 1 160,0 v46 a80,10 0 0 1 -160,0 z"></path>
+    <path d="M1330,18 a80,10 0 0 1 160,0 v46 a80,10 0 0 1 -160,0 z"></path>
+  </g>
+  <!-- arc avant du dessus, pour l'effet cylindre -->
+  <g fill="none" stroke="#563C9A" stroke-width="1.5">
+    <path d="M10,18 a80,10 0 0 0 160,0"></path>
+    <path d="M190,18 a80,10 0 0 0 160,0"></path>
+    <path d="M450,18 a110,10 0 0 0 220,0"></path>
+    <path d="M770,18 a80,10 0 0 0 160,0"></path>
+    <path d="M950,18 a80,10 0 0 0 160,0"></path>
+    <path d="M1150,18 a80,10 0 0 0 160,0"></path>
+    <path d="M1330,18 a80,10 0 0 0 160,0"></path>
+  </g>
+  <g text-anchor="middle" fill="#17003C">
+    <text x="90" y="44" font-size="16" font-weight="700">📋 BDQC</text>
+    <text x="90" y="60" font-size="12">liste d'espèces</text>
+    <text x="270" y="44" font-size="16" font-weight="700">🗺️ Atlas</text>
+    <text x="270" y="60" font-size="12">espèces observées</text>
+    <text x="560" y="44" font-size="16" font-weight="700">🏷️ Amorces</text>
+    <text x="560" y="60" font-size="12">Keck et al. 2022</text>
+    <text x="850" y="44" font-size="16" font-weight="700">🧬 NCBI</text>
+    <text x="850" y="60" font-size="12">nucleotide + genome</text>
+    <text x="1030" y="44" font-size="16" font-weight="700">🧫 BOLD</text>
+    <text x="1030" y="60" font-size="12">barcodes</text>
+    <text x="1230" y="44" font-size="16" font-weight="700">🛡️ COSEPAC/LEMV</text>
+    <text x="1230" y="60" font-size="12">statuts</text>
+    <text x="1410" y="44" font-size="16" font-weight="700">📐 CanVec</text>
+    <text x="1410" y="60" font-size="12">limites QC</text>
+  </g>
+
+  <!-- sources -> etapes -->
+  <g stroke="#563C9A" stroke-width="2" marker-end="url(#arrow)">
+    <line x1="90" y1="74" x2="90" y2="100"></line>
+    <line x1="270" y1="74" x2="270" y2="100"></line>
+    <line x1="560" y1="74" x2="560" y2="100"></line>
+    <line x1="850" y1="74" x2="850" y2="100"></line>
+    <line x1="1030" y1="74" x2="1030" y2="100"></line>
+    <line x1="1230" y1="74" x2="1230" y2="100"></line>
+    <line x1="1410" y1="74" x2="1410" y2="100"></line>
+  </g>
+
+  <!-- ================= ETAPES DU WORKFLOW ================= -->
+  <g>
+    <rect x="10" y="104" width="340" height="80" rx="10" fill="#563C9A"></rect>
+    <rect x="390" y="104" width="340" height="80" rx="10" fill="#563C9A"></rect>
+    <rect x="770" y="104" width="340" height="80" rx="10" fill="#563C9A"></rect>
+    <rect x="1150" y="104" width="340" height="80" rx="10" fill="#563C9A"></rect>
+  </g>
+  <g text-anchor="middle" fill="#fff">
+    <text x="180" y="136" font-size="17" font-weight="700">① Backbone taxonomique</text>
+    <text x="180" y="162" font-size="13" fill="#E3FAEC">23 710 espèces</text>
+    <text x="560" y="136" font-size="17" font-weight="700">② Marqueurs par espèce</text>
+    <text x="560" y="162" font-size="13" fill="#E3FAEC">COI, rbcL, trnL, cytb…</text>
+    <text x="940" y="136" font-size="17" font-weight="700">③ Requête par espèce</text>
+    <text x="940" y="162" font-size="13" fill="#E3FAEC">espèce × marqueur</text>
+    <text x="1320" y="136" font-size="17" font-weight="700">④ Filtrage &amp; contrôle qualité</text>
+    <text x="1320" y="162" font-size="13" fill="#E3FAEC">géographique · longueur · codon stop</text>
+  </g>
+  <g stroke="#563C9A" stroke-width="2.5" marker-end="url(#arrow)">
+    <line x1="350" y1="144" x2="390" y2="144"></line>
+    <line x1="730" y1="144" x2="770" y2="144"></line>
+    <line x1="1110" y1="144" x2="1150" y2="144"></line>
+  </g>
+
+  <!-- ④ -> table (coude) -->
+  <polyline points="1320,184 1320,200 750,200 750,218" fill="none" stroke="#563C9A" stroke-width="2" marker-end="url(#arrow)"></polyline>
+
+  <!-- ================= SORTIE INTERMEDIAIRE ================= -->
+  <rect x="530" y="222" width="440" height="62" rx="10" fill="#17003C"></rect>
+  <text x="750" y="260" text-anchor="middle" font-size="17" font-weight="700" fill="#fff">🗂️ Table récapitulative par espèce</text>
+
+  <!-- Atlas, seconde utilisation : occurrences pour la comparaison -->
+  <path d="M1220,232 a80,10 0 0 1 160,0 v42 a80,10 0 0 1 -160,0 z" fill="#FFF3C0" stroke="#563C9A" stroke-width="1.5"></path>
+  <path d="M1220,232 a80,10 0 0 0 160,0" fill="none" stroke="#563C9A" stroke-width="1.5"></path>
+  <text x="1300" y="256" text-anchor="middle" font-size="14" font-weight="700" fill="#17003C">🗺️ Atlas</text>
+  <text x="1300" y="272" text-anchor="middle" font-size="12" fill="#17003C">occurrences</text>
+
+  <!-- ================= RESULTATS ================= -->
+  <g stroke="#563C9A" stroke-width="2" marker-end="url(#arrow)">
+    <line x1="640" y1="284" x2="400" y2="314"></line>
+    <line x1="860" y1="284" x2="1080" y2="314"></line>
+  </g>
+  <line x1="1300" y1="284" x2="1300" y2="314" stroke="#9478F8" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#arrowlight)"></line>
+
+  <rect x="90" y="318" width="580" height="72" rx="10" fill="#E3FAEC" stroke="#FF6645" stroke-width="1.5"></rect>
+  <text x="380" y="346" text-anchor="middle" font-size="17" font-weight="700" fill="#17003C">🔬 Couverture &amp; qualité génomique</text>
+  <text x="380" y="370" text-anchor="middle" font-size="13" fill="#3B2A5C">marqueurs · qualité des séquences · statuts</text>
+
+  <rect x="830" y="318" width="580" height="72" rx="10" fill="#E3FAEC" stroke="#FF6645" stroke-width="1.5"></rect>
+  <text x="1120" y="346" text-anchor="middle" font-size="17" font-weight="700" fill="#17003C">💧 Contribution eDNA vs Atlas</text>
+  <text x="1120" y="370" text-anchor="middle" font-size="13" fill="#3B2A5C">spatial · temporel · diversité</text>
+</svg>
+</div>
+</section></section>
+<section>
+<section id="résultats" class="title-slide slide level1 center" data-background-color="#17003C">
+<h1>Résultats</h1>
+
+</section>
+<section id="résultats-des-requêtes" class="slide level2 smaller">
+<h2>Résultats des requêtes</h2>
+<p><strong>Tableau 1 &amp; 2.</strong> Caractéristiques des observations (Atlas) et des séquences (NCBI/BOLD)</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Indicateur</th>
+<th style="text-align: right;">Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Espèces sur la liste BDQC</td>
+<td style="text-align: right;">23 710</td>
+</tr>
+<tr class="even">
+<td>Espèces avec ≥ 1 séquence NCBI</td>
+<td style="text-align: right;">21 374 (90,1 %)</td>
+</tr>
+<tr class="odd">
+<td>Espèces sans aucune séquence</td>
+<td style="text-align: right;">2 336 (9,9 %)</td>
+</tr>
+<tr class="even">
+<td>Enregistrements NCBI (voucher)</td>
+<td style="text-align: right;">911 819</td>
+</tr>
+<tr class="odd">
+<td>Enregistrements BOLD</td>
+<td style="text-align: right;">116 869</td>
+</tr>
+<tr class="even">
+<td>Espèces avec génome mitochondrial</td>
+<td style="text-align: right;">2 634 (11,1 %)</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Chiffres NCBI restreints à <code>voucher[Title]</code> (run en cache) — un prochain <code>tar_make()</code> lèvera ce filtre. Résumé Atlas au niveau enregistrement à compléter.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="résultats-des-requêtes-composition-du-backbone" class="slide level2 smaller">
+<h2>Résultats des requêtes — composition du backbone</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="assets/images/taxo-plot.png" height="650"></p>
+<figcaption>Répartition taxonomique des 23 710 espèces BDQC</figcaption>
+</figure>
+</div>
+</section>
+<section id="o1-figure-1a-taxonomique-recouvrement" class="slide level2 smaller">
+<h2>O1 · Figure 1a — Taxonomique : recouvrement</h2>
+<p>Sur 22 678 espèces BDQC couvertes par au moins une approche : 6 345 vues par les deux, 2 055 eDNA seulement, 14 278 traditionnel seulement — <strong>Jaccard = 28,0 %</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="assets/images/composition-venn-bar.png" height="450"></p>
+<figcaption>Recouvrement des ensembles d’espèces</figcaption>
+</figure>
+</div>
+</section>
+<section id="o1-contribution-spatiale" class="slide level2 smaller">
+<h2>O1 — Contribution spatiale</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Espèces sans aucun enregistrement traditionnel (eDNA seulement) : <strong>2 317 (26,7 %)</strong></li>
+<li>Paires (espèce, cellule) eDNA non couvertes par l’Atlas traditionnel : <strong>80,1 %</strong></li>
+</ul>
+<p>L’effet varie fortement selon le groupe taxonomique (log-ratio de richesse, Keck et al.&nbsp;2022 : χ² = 22 118, ddl 11, p &lt; 0,001) — pas un simple déficit uniforme.</p>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="assets/images/spatial-figure.png" height="500"></p>
+<figcaption>Contribution spatiale</figcaption>
+</figure>
+</div>
+</div></div>
 <aside class="notes">
-<p>Ces biais sous-tendent une série de <em>biodiversity shortfalls</em>.</p>
+<p>Voir Keck, Blackman, Bossart et al.&nbsp;(2022), <em>Molecular Ecology</em> 31(6):1820-1835, doi:10.1111/mec.16364. Volet temporel disponible en annexe si question.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -190,199 +445,133 @@ Vissault, Fuster, Gravel, Brochu, Langlois
           display:block!important;
       }</style></aside>
 </section>
-<section id="lintégration-de-données-comme-solution" class="slide level2 smaller">
-<h2>L’intégration de données comme solution</h2>
-<ul>
-<li>Données de présence et d’abondance pour les modèles de distribution</li>
-<li>Intégration des données de mouvement pour la cartographie</li>
-<li>Utilisation de données phylogénétiques pour l’imputation de traits</li>
-<li>Combinaison des données génomiques aux données d’occurrence : une voie naturelle</li>
-<li>Déjà de nombreuses observations dans GBIF issues de campagnes d’échantillonnage eDNA</li>
-</ul>
+<section id="o1-tableau-3-suivi-des-espèces-menacées" class="slide level2 smaller">
+<h2>O1 · Tableau 3 — Suivi des espèces menacées</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Juridiction</th>
+<th>Statut</th>
+<th style="text-align: right;">Espèces</th>
+<th style="text-align: right;">Avec séquence</th>
+<th style="text-align: right;">Couverture</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Canada (COSEPAC)</td>
+<td>Toutes catégories</td>
+<td style="text-align: right;">1 646</td>
+<td style="text-align: right;">1 129</td>
+<td style="text-align: right;">68,6 %</td>
+</tr>
+<tr class="even">
+<td>Canada (COSEPAC)</td>
+<td>Endangered</td>
+<td style="text-align: right;">602</td>
+<td style="text-align: right;">359</td>
+<td style="text-align: right;">59,6 %</td>
+</tr>
+<tr class="odd">
+<td>Québec (LEMV)</td>
+<td>Toutes catégories</td>
+<td style="text-align: right;">577</td>
+<td style="text-align: right;">551</td>
+<td style="text-align: right;">95,5 %</td>
+</tr>
+<tr class="even">
+<td>Québec (LEMV)</td>
+<td>Vulnerable</td>
+<td style="text-align: right;">111</td>
+<td style="text-align: right;">109</td>
+<td style="text-align: right;">98,2 %</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Contribution eDNA spécifique</strong> : 61 espèces à statut CA (9,2 %) et 27 QC (22,9 %) détectées uniquement par eDNA — dont <em>Lamna nasus</em>, <em>Thunnus thynnus</em> (Endangered)</p>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="assets/images/risk-coverage-plot.png" height="500"></p>
+<figcaption>Couverture génomique par statut de conservation</figcaption>
+</figure>
+</div>
+</div></div>
 </section>
-<section id="avantages-potentiels-de-ladne" class="slide level2 smaller">
-<h2>Avantages potentiels de l’ADNe</h2>
-<ul>
-<li>Méthodologie d’identification distincte</li>
-<li>Réduction du fardeau de l’expertise taxonomique</li>
-<li>Capacité d’échantillonnage accrue (si l’animal est présent, il est détecté — réduit les fausses absences)</li>
-<li>Empreinte spatiale (ex. ruisseau) et temporelle accrue</li>
-</ul>
+<section id="o2-figure-5-profondeur-de-séquençage-par-groupe" class="slide level2 smaller">
+<h2>O2 · Figure 5 — Profondeur de séquençage par groupe</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Part des espèces par groupe avec génome complet, 1 seul marqueur, 2, 3 ou 4+ marqueurs distincts, ou sans donnée</p>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="assets/images/markers-donut-plot.png" height="500"></p>
+<figcaption>Couverture des marqueurs par groupe</figcaption>
+</figure>
+</div>
+</div></div>
 </section>
-<section id="limites-des-données-adne" class="slide level2 smaller">
-<h2>Limites des données ADNe</h2>
-<ul>
-<li>Librairies de référence incomplètes</li>
-<li>Assignations erronées</li>
-<li>Biais géographiques</li>
-<li>Contaminations</li>
-<li>Imprécision spatiale (localisation) et temporelle (date)</li>
-</ul>
-</section>
-<section id="objectifs" class="slide level2 smaller">
-<h2>Objectifs</h2>
-<ol type="1">
-<li>Évaluer la complémentarité des séquences ADN pour compléter les données de biodiversité</li>
-<li>Déterminer l’ampleur des trous dans les assignations et prioriser le travail de référencement</li>
-<li>Évaluer la qualité des séquences disponibles pour le suivi de la biodiversité</li>
-</ol>
+<section id="o3-qualité-et-homogénéité-des-séquences" class="slide level2 smaller">
+<h2>O3 — Qualité et homogénéité des séquences</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Un quart des 597 641 séquences COI font <strong>exactement 658 pb</strong> (amplicon Folmer), mais la médiane (608 pb) tombe <strong>sous</strong> cette fenêtre — l’essentiel du dépôt est plus court que le barcode standard.</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Marqueur</th>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;">Médiane (pb)</th>
+<th style="text-align: right;">Codon stop (%)</th>
+<th style="text-align: right;">CV intra-espèce médian</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>COI</td>
+<td style="text-align: right;">597 641</td>
+<td style="text-align: right;">608</td>
+<td style="text-align: right;">4,01</td>
+<td style="text-align: right;">6,5 % (homogène)</td>
+</tr>
+<tr class="even">
+<td>rbcL / matK</td>
+<td style="text-align: right;">70 607</td>
+<td style="text-align: right;">640</td>
+<td style="text-align: right;">21,76</td>
+<td style="text-align: right;">24,2 % (hétérogène)</td>
+</tr>
+<tr class="odd">
+<td>Nuclear rRNA / ITS</td>
+<td style="text-align: right;">1 327 606</td>
+<td style="text-align: right;">152</td>
+<td style="text-align: right;">96,08</td>
+<td style="text-align: right;">—</td>
+</tr>
+</tbody>
+</table>
+<p>Cas extrême : <em>Poa trivialis</em> (trnL, n = 9), longueurs 53–1 766 pb — mini-barcode et intron complet déposés sous la même étiquette.</p>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="assets/images/coi-length-distribution.png" height="500"></p>
+<figcaption>Distribution des longueurs de séquence COI</figcaption>
+</figure>
+</div>
+</div></div>
 </section></section>
 <section>
-<section id="matériel-et-méthodes" class="title-slide slide level1 center">
-<h1>Matériel et méthodes</h1>
-
-</section>
-<section id="approche" class="slide level2 smaller">
-<h2>Approche</h2>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Note</strong></p>
-</div>
-<div class="callout-content">
-<p>Section à détailler par SV.</p>
-</div>
-</div>
-</div>
-<ul>
-<li>Sources de données : Atlas (occurrences), NCBI et BOLD (séquences)</li>
-<li><strong>Attention</strong> : exclure de l’analyse les espèces domestiques, ainsi que les conflits liés aux spécimens de musées, herbiers, etc.</li>
-</ul>
-</section></section>
-<section>
-<section id="résultats" class="title-slide slide level1 center">
-<h1>Résultats</h1>
-
-</section>
-<section id="résultats-des-requêtes" class="slide level2 smaller">
-<h2>Résultats des requêtes</h2>
-<p><strong>Tableau 1.</strong> Résumé des caractéristiques des observations disponibles sur Atlas</p>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Note</strong></p>
-</div>
-<div class="callout-content">
-<p>Tableau à insérer.</p>
-</div>
-</div>
-</div>
-<p><strong>Tableau 2.</strong> Résumé des caractéristiques des séquences disponibles sur NCBI et BOLD</p>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Note</strong></p>
-</div>
-<div class="callout-content">
-<p>Tableau à insérer.</p>
-</div>
-</div>
-</div>
-</section>
-<section id="o1-complémentarité-entre-les-sources-de-données" class="slide level2 smaller">
-<h2>O1 — Complémentarité entre les sources de données</h2>
-<p>Sommaire des « nouvelles » observations (combinaison espèce-pixel 5km)</p>
-<h3 id="taxonomique">Taxonomique</h3>
-<p><strong>Figure 1.</strong> Répartition taxonomique des observations directes et des séquences</p>
-<p><strong>Figure 2.</strong> Nombre d’observations Atlas vs nombre de séquences — permet de documenter si les mêmes biais en faveur des espèces abondantes existent</p>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Note</strong></p>
-</div>
-<div class="callout-content">
-<p>Figures à insérer.</p>
-</div>
-</div>
-</div>
-</section>
-<section id="o1-complémentarité-suite" class="slide level2 smaller">
-<h2>O1 — Complémentarité (suite)</h2>
-<h3 id="spatiale">Spatiale</h3>
-<p><strong>Figure 3.</strong> Localisation des observations Atlas / Séquences</p>
-<h3 id="temporelle">Temporelle</h3>
-<p><strong>Figure 4.</strong> Comparaison des années d’observation Atlas / Séquences</p>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Note</strong></p>
-</div>
-<div class="callout-content">
-<p>Figures à insérer.</p>
-</div>
-</div>
-</div>
-</section>
-<section id="o1-suivi-des-espèces-menacées" class="slide level2 smaller">
-<h2>O1 — Suivi des espèces menacées</h2>
-<p><strong>Tableau 3.</strong> Sommaire de la couverture pour les EMV au Québec et au Canada</p>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Note</strong></p>
-</div>
-<div class="callout-content">
-<p>Tableau à insérer.</p>
-</div>
-</div>
-</div>
-</section>
-<section id="o2-qualité-des-données-de-référence" class="slide level2 smaller">
-<h2>O2 — Qualité des données de référence</h2>
-<p><strong>Figure 5.</strong> Répartition de la profondeur de séquençage par groupe taxonomique</p>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Note</strong></p>
-</div>
-<div class="callout-content">
-<p>Figure à insérer.</p>
-</div>
-</div>
-</div>
-</section>
-<section id="o3-qualité-des-assignations" class="slide level2 smaller">
-<h2>O3 — Qualité des assignations</h2>
-<p><strong>Figure 6.</strong> Localisation des séquences pour différentes espèces</p>
-<p><strong>Tableau 4.</strong> Description des données par marqueur</p>
-<p><strong>Tableau 5.</strong> Qualité des séquences</p>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Note</strong></p>
-</div>
-<div class="callout-content">
-<p>Figure et tableaux à insérer.</p>
-</div>
-</div>
-</div>
-</section></section>
-<section>
-<section id="discussion" class="title-slide slide level1 center">
+<section id="discussion" class="title-slide slide level1 center" data-background-color="#17003C">
 <h1>Discussion</h1>
 
 </section>
@@ -399,85 +588,21 @@ Vissault, Fuster, Gravel, Brochu, Langlois
 <li>Très mauvaise connaissance de la <em>dark diversity</em> : ce qui n’est pas assigné, ou mal assigné</li>
 </ul>
 </section>
-<section id="complémentarité-et-capacité-à-bonifier" class="slide level2 smaller">
-<h2>Complémentarité et capacité à bonifier</h2>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Note</strong></p>
-</div>
-<div class="callout-content">
-<p>Section à détailler par AF &amp; DG.</p>
-</div>
-</div>
-</div>
+<section id="enjeux-et-pistes-à-venir" class="slide level2 smaller">
+<h2>Enjeux et pistes à venir</h2>
+<ul>
+<li>Requêtes taxonomiques et spatiales supposent un BLAST et un géoréférencement corrects — comment interroger ce qui n’est <em>pas</em> assigné (dark diversity) ?</li>
+<li>Valorisation des collections : accès à de l’information de qualité en profondeur temporelle, projets inattendus (ex. nématodes)</li>
+<li>Résolution infraspécifique (sous-espèces) : peu de marqueurs la captent — besoin de génomes complets et de qPCR ciblé</li>
+<li>Méthodes à venir : ADN aéroporté, traitement d’image (Medeiros et al.&nbsp;2025, <em>NEE</em>), IA pour l’assignation</li>
+</ul>
 </section>
 <section id="vers-une-nouvelle-plateforme" class="slide level2 smaller">
 <h2>Vers une nouvelle plateforme</h2>
-<p>Design d’une nouvelle plateforme pour intégrer les données d’occurrence et de génomique</p>
-</section>
-<section id="contrôle-de-la-qualité" class="slide level2 smaller">
-<h2>Contrôle de la qualité</h2>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Note</strong></p>
-</div>
-<div class="callout-content">
-<p>Section à détailler par AF &amp; DG.</p>
-</div>
-</div>
-</div>
-</section>
-<section id="enjeux-avec-les-requêtes" class="slide level2 smaller">
-<h2>Enjeux avec les requêtes</h2>
-<ul>
-<li>Requêtes par unité taxonomique : on assume que le BLAST est correct</li>
-<li>Requêtes spatiales : même hypothèse implicite</li>
-<li>Comment interroger les espèces non assignées pour une région donnée ?</li>
-<li>Quelle est la qualité des données spatiales ?</li>
-<li>Problèmes potentiels : spécimens de musées, centroïdes</li>
-</ul>
-</section>
-<section id="valorisation-des-collections" class="slide level2 smaller">
-<h2>Valorisation des collections</h2>
-<ul>
-<li>Accès à une grande quantité d’information de haute qualité pour les bases de référence</li>
-<li>Accès à des observations en profondeur temporelle</li>
-<li>Projets de recherche inattendus (ex. nématodes)</li>
-</ul>
-</section>
-<section id="dark-diversity" class="slide level2 smaller">
-<h2>Dark diversity</h2>
-<p>Que faire avec les séquences qui ne sont pas assignées ?</p>
-</section>
-<section id="la-valeur-de-linformation-spatiale" class="slide level2 smaller">
-<h2>La valeur de l’information spatiale</h2>
-<p>Exemple : assignations contraintes spatialement</p>
-</section>
-<section id="résolution-le-problème-des-sous-espèces" class="slide level2 smaller">
-<h2>Résolution : le problème des sous-espèces</h2>
-<ul>
-<li>Peu de marqueurs captent cette variation</li>
-<li>Besoin de séquençage du génome complet et de qPCR pour capter cette variabilité</li>
-</ul>
-</section>
-<section id="nouvelles-méthodes-à-venir" class="slide level2 smaller">
-<h2>Nouvelles méthodes à venir</h2>
-<ul>
-<li>Échantillonnage d’ADN aéroporté</li>
-<li>Autres méthodes d’assignation (traitement d’image ADN, Medeiros et al.&nbsp;2025, <em>NEE</em>)</li>
-<li>Intelligence artificielle</li>
-</ul>
+<p>Design d’une nouvelle plateforme pour intégrer les données d’occurrence et de génomique — avec contrôle de la qualité et harmonisation des sources (BOLD, NCBI, Atlas) au cœur du design.</p>
 </section></section>
 <section>
-<section id="merci" class="title-slide slide level1 center">
+<section id="merci" class="title-slide slide level1 center" data-background-color="#17003C">
 <h1>Merci</h1>
 
 </section>
@@ -489,7 +614,7 @@ Vissault, Fuster, Gravel, Brochu, Langlois
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-<p>FACET (en préparation)</p>
+
 </div>
 </div></div>
 
@@ -667,12 +792,12 @@ Vissault, Fuster, Gravel, Brochu, Langlois
         // The "normal" size of the presentation, aspect ratio will be preserved
         // when the presentation is scaled to fit different resolutions. Can be
         // specified using percentage units.
-        width: 1050,
+        width: 1600,
 
-        height: 700,
+        height: 900,
 
         // Factor of the display size that should remain empty around the content
-        margin: 0.1,
+        margin: 4.0e-2,
 
         math: {
           mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
