@@ -97,10 +97,10 @@ Ce sont typiquement des groupes riches en espèces, petits/discrets et coûteux 
 
 ::: {.columns}
 ::: {.column width="50%"}
-![Toutes espèces](assets/images/spatial-figure.png){height="600"}
+![Toutes espèces](assets/images/spatial-figure.png){height="680"}
 :::
 ::: {.column width="50%"}
-![Lepidoptera seulement](assets/images/spatial-figure-lepidoptera.png){height="600"}
+![Lepidoptera seulement](assets/images/spatial-figure-lepidoptera.png){height="680"}
 :::
 :::
 
@@ -181,8 +181,8 @@ Des organismes dédiés forment aux bonnes pratiques d'échantillonnage, de labo
 ```{mermaid}
 %%{init: {'theme':'base', 'themeVariables': {'fontFamily':'Overpass, sans-serif','fontSize':'20px'}, 'flowchart': {'padding':34,'nodeSpacing':55,'rankSpacing':55,'curve':'linear'}}}%%
 flowchart LR
-    TAQC["<img src='assets/logos/taqc_logo.svg' width='360' height='228'/>"]
-    GENO["<img src='assets/logos/Genovalia_Logo_Mauve.png' width='440' height='166'/>"]
+    TAQC@{ img: "assets/logos/taqc_logo.svg", w: 360, h: 228 }
+    GENO@{ img: "assets/logos/Genovalia_Logo_Mauve.png", w: 440, h: 166 }
 
     subgraph SG1["Pratiques adaptées"]
         direction LR
@@ -203,8 +203,8 @@ flowchart LR
     end
     A --> B --> C --> D
 
-    TAQC --> B
-    GENO --> SG2
+    TAQC ~~~ B
+    GENO ~~~ D
 
     style SG1 fill:none,stroke:#FF6645,stroke-width:3px,stroke-dasharray: 6 4
     style SG2 fill:none,stroke:#FF6645,stroke-width:3px,stroke-dasharray: 6 4
@@ -236,6 +236,3 @@ Design d'une nouvelle plateforme pour intégrer les données d'occurrence et de 
 
 # Merci {background-color="#17003C"}
 
-## Contact {.smaller}
-
-Vissault · Fuster · Gravel · Brochu · Langlois

@@ -65,7 +65,9 @@ $mermaid-font-family: "Overpass", sans-serif;
 .reveal .slides > section:not(#title-slide),
 .reveal .slides > section:not(#title-slide) > section {
   box-sizing: border-box;
-  padding: 3% 4%;
+  // Less headroom above the title than below the content: the top gap was
+  // costing vertical space that full-height figures (the maps) need.
+  padding: 1% 4% 3%;
 }
 
 .reveal h1, .reveal h2, .reveal h3 { font-family: "Overpass", sans-serif; }
