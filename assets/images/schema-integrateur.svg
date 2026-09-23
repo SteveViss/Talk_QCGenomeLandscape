@@ -1,0 +1,114 @@
+<svg viewBox="0 0 750 600" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; font-family: 'Source Sans 3', sans-serif;">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#563C9A"/>
+    </marker>
+    <marker id="arrowlight" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#9478F8"/>
+    </marker>
+  </defs>
+
+  <!-- ================= SOURCES (rang 1 : Atlas, Amorces) ================= -->
+  <g fill="#FFF3C0" stroke="#563C9A" stroke-width="1.5">
+    <path d="M100,18 a80,10 0 0 1 160,0 v46 a80,10 0 0 1 -160,0 z"/>
+    <path d="M440,18 a110,10 0 0 1 220,0 v46 a110,10 0 0 1 -220,0 z"/>
+  </g>
+  <g fill="none" stroke="#563C9A" stroke-width="1.5">
+    <path d="M100,18 a80,10 0 0 0 160,0"/>
+    <path d="M440,18 a110,10 0 0 0 220,0"/>
+  </g>
+  <g text-anchor="middle" fill="#17003C">
+    <text x="180" y="44" font-size="16" font-weight="700">🗺️ Atlas</text>
+    <text x="180" y="60" font-size="12">espèces observées</text>
+    <text x="550" y="44" font-size="16" font-weight="700">🏷️ Amorces</text>
+    <text x="550" y="60" font-size="12">Keck et al. 2022</text>
+  </g>
+  <g stroke="#563C9A" stroke-width="2" marker-end="url(#arrow)">
+    <line x1="180" y1="74" x2="180" y2="100"/>
+    <line x1="550" y1="74" x2="550" y2="100"/>
+  </g>
+
+  <!-- ================= ETAPES ①② (rang 1) ================= -->
+  <g>
+    <rect x="10"  y="104" width="340" height="80" rx="10" fill="#563C9A"/>
+    <rect x="380" y="104" width="340" height="80" rx="10" fill="#563C9A"/>
+  </g>
+  <g text-anchor="middle" fill="#fff">
+    <text x="180" y="136" font-size="17" font-weight="700">① Backbone taxonomique</text>
+    <text x="180" y="162" font-size="13" fill="#E3FAEC">23 710 espèces</text>
+    <text x="550" y="136" font-size="17" font-weight="700">② Marqueurs par espèce</text>
+    <text x="550" y="162" font-size="13" fill="#E3FAEC">COI, rbcL, trnL, cytb…</text>
+  </g>
+  <g stroke="#563C9A" stroke-width="2.5" marker-end="url(#arrow)">
+    <line x1="350" y1="144" x2="380" y2="144"/>
+  </g>
+
+  <!-- ================= SOURCES (rang 2 : NCBI, BOLD) ================= -->
+  <g fill="#FFF3C0" stroke="#563C9A" stroke-width="1.5">
+    <path d="M45,204  a50,8 0 0 1 100,0 v34 a50,8 0 0 1 -100,0 z"/>
+    <path d="M215,204 a50,8 0 0 1 100,0 v34 a50,8 0 0 1 -100,0 z"/>
+  </g>
+  <g fill="none" stroke="#563C9A" stroke-width="1.5">
+    <path d="M45,204  a50,8 0 0 0 100,0"/>
+    <path d="M215,204 a50,8 0 0 0 100,0"/>
+  </g>
+  <g text-anchor="middle" fill="#17003C">
+    <text x="95"  y="228" font-size="13" font-weight="700">🧬 NCBI</text>
+    <text x="95"  y="242" font-size="10">nucleotide + genome</text>
+    <text x="265" y="228" font-size="13" font-weight="700">🧫 BOLD</text>
+    <text x="265" y="242" font-size="10">barcodes</text>
+  </g>
+  <g stroke="#563C9A" stroke-width="2" marker-end="url(#arrow)">
+    <line x1="95"  y1="254" x2="95"  y2="280"/>
+    <line x1="265" y1="254" x2="265" y2="280"/>
+  </g>
+
+  <!-- ②→③ : repli sous ① (réduit la largeur du schéma) -->
+  <polyline points="550,184 550,264 180,264 180,280" fill="none"
+            stroke="#563C9A" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- ================= ETAPES ③④ (rang 2, sous ①②) ================= -->
+  <g>
+    <rect x="10"  y="280" width="340" height="80" rx="10" fill="#563C9A"/>
+    <rect x="380" y="280" width="340" height="80" rx="10" fill="#563C9A"/>
+  </g>
+  <g text-anchor="middle" fill="#fff">
+    <text x="180" y="312" font-size="17" font-weight="700">③ Requête par espèce</text>
+    <text x="180" y="338" font-size="13" fill="#E3FAEC">espèce × marqueur</text>
+    <text x="550" y="312" font-size="17" font-weight="700">④ Filtrage &amp; contrôle qualité</text>
+    <text x="550" y="338" font-size="13" fill="#E3FAEC">géographique · longueur · codon stop</text>
+  </g>
+  <g stroke="#563C9A" stroke-width="2.5" marker-end="url(#arrow)">
+    <line x1="350" y1="320" x2="380" y2="320"/>
+  </g>
+
+  <!-- ④ -> table (coude) -->
+  <polyline points="550,360 550,380 370,380 370,400" fill="none"
+            stroke="#563C9A" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- ================= SORTIE INTERMEDIAIRE ================= -->
+  <rect x="195" y="400" width="350" height="62" rx="10" fill="#17003C"/>
+  <text x="370" y="436" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">🗂️ Table récapitulative par espèce</text>
+
+  <!-- Atlas, seconde utilisation : occurrences pour la comparaison -->
+  <path d="M590,400 a50,8 0 0 1 100,0 v34 a50,8 0 0 1 -100,0 z" fill="#FFF3C0" stroke="#563C9A" stroke-width="1.5"/>
+  <path d="M590,400 a50,8 0 0 0 100,0" fill="none" stroke="#563C9A" stroke-width="1.5"/>
+  <text x="640" y="424" text-anchor="middle" font-size="13" font-weight="700" fill="#17003C">🗺️ Atlas</text>
+  <text x="640" y="438" text-anchor="middle" font-size="10" fill="#17003C">occurrences</text>
+
+  <!-- ================= RESULTATS ================= -->
+  <g stroke="#563C9A" stroke-width="2" marker-end="url(#arrow)">
+    <line x1="300" y1="462" x2="185" y2="490"/>
+    <line x1="440" y1="462" x2="555" y2="490"/>
+  </g>
+  <line x1="640" y1="442" x2="640" y2="490" stroke="#9478F8" stroke-width="2"
+        stroke-dasharray="6 5" marker-end="url(#arrowlight)"/>
+
+  <rect x="10"  y="490" width="350" height="72" rx="10" fill="#E3FAEC" stroke="#FF6645" stroke-width="1.5"/>
+  <text x="185" y="518" text-anchor="middle" font-size="15" font-weight="700" fill="#17003C">🔬 Couverture &amp; qualité génomique</text>
+  <text x="185" y="542" text-anchor="middle" font-size="11" fill="#3B2A5C">marqueurs · qualité des séquences · statuts</text>
+
+  <rect x="380" y="490" width="350" height="72" rx="10" fill="#E3FAEC" stroke="#FF6645" stroke-width="1.5"/>
+  <text x="555" y="518" text-anchor="middle" font-size="15" font-weight="700" fill="#17003C">💧 Contribution eDNA vs Atlas</text>
+  <text x="555" y="542" text-anchor="middle" font-size="11" fill="#3B2A5C">spatial · temporel · diversité</text>
+</svg>

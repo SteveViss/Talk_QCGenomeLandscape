@@ -1,0 +1,28 @@
+<svg viewBox="0 0 1500 130" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; font-family: 'Source Sans 3', sans-serif;">
+  <g fill="#FFF3C0" stroke="#563C9A" stroke-width="1.5">
+    <path d="M70,18 a80,10 0 0 1 160,0 v46 a80,10 0 0 1 -160,0 z"/>
+    <path d="M370,18 a80,10 0 0 1 160,0 v46 a80,10 0 0 1 -160,0 z"/>
+    <path d="M670,18 a80,10 0 0 1 160,0 v46 a80,10 0 0 1 -160,0 z"/>
+    <path d="M970,18 a80,10 0 0 1 160,0 v46 a80,10 0 0 1 -160,0 z"/>
+    <path d="M1270,18 a80,10 0 0 1 160,0 v46 a80,10 0 0 1 -160,0 z"/>
+  </g>
+  <g fill="none" stroke="#563C9A" stroke-width="1.5">
+    <path d="M70,18 a80,10 0 0 0 160,0"/>
+    <path d="M370,18 a80,10 0 0 0 160,0"/>
+    <path d="M670,18 a80,10 0 0 0 160,0"/>
+    <path d="M970,18 a80,10 0 0 0 160,0"/>
+    <path d="M1270,18 a80,10 0 0 0 160,0"/>
+  </g>
+  <g text-anchor="middle" fill="#17003C">
+    <text x="150"  y="44" font-size="16" font-weight="700">📋 BDQC</text>
+    <text x="150"  y="60" font-size="12">~23 700 espèces</text>
+    <text x="450"  y="44" font-size="16" font-weight="700">🧫 BOLD</text>
+    <text x="450"  y="60" font-size="12">barcodes COI</text>
+    <text x="750"  y="44" font-size="16" font-weight="700">🧬 NCBI</text>
+    <text x="750"  y="60" font-size="12">séquences · génomes</text>
+    <text x="1050" y="44" font-size="16" font-weight="700">🛡️ COSEPAC/LEMV</text>
+    <text x="1050" y="60" font-size="12">statuts</text>
+    <text x="1350" y="44" font-size="16" font-weight="700">🗺️ Atlas</text>
+    <text x="1350" y="60" font-size="12">occurrences</text>
+  </g>
+</svg>
