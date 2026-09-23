@@ -38,6 +38,24 @@ $font-family-monospace: "IBM Plex Mono", ui-monospace, monospace;
 $code-block-bg: $mauve;
 $code-color: $mint;
 
+// Mermaid — Quarto injects its own `themeCSS` built from these variables and
+// it outranks anything a diagram's own `%%{init: themeVariables}%%` sets, so
+// the deck's diagram palette has to live here (otherwise every flowchart
+// renders in Quarto's default blue-on-grey, whatever the init block says).
+$mermaid-bg-color: $body-bg;
+$mermaid-fg-color: $mauve;
+$mermaid-fg-color--lighter: $violet-tint;
+$mermaid-fg-color--lightest: rgba($violet, 0.1);
+$mermaid-edge-color: $mauve-mid;
+$mermaid-node-bg-color: $mauve-mid;
+$mermaid-node-fg-color: $mauve;
+$mermaid-label-bg-color: $body-bg;
+// Node labels sit on the mauve-mid node fill, so they're white; the labels
+// that sit on the slide background instead (cluster titles, edge labels) are
+// re-colored in the rules section below.
+$mermaid-label-fg-color: #fff;
+$mermaid-font-family: "Overpass", sans-serif;
+
 /*-- scss:rules --*/
 
 .reveal { font-family: "Source Sans 3", sans-serif; }
@@ -81,7 +99,6 @@ $assets: "../../../../../assets";
   background-position: center;
 }
 
-
 // Two traps here:
 // 1. box-sizing — the section is content-box, so a % padding-right widens the
 //    section past the slide instead of narrowing the text column, and the h1
@@ -108,15 +125,17 @@ $assets: "../../../../../assets";
   content: "";
   position: absolute;
   left: 1%; top: 700px;
-  width: 40%; height: 130px;
+  width: 46%; height: 130px;
   background-image:
     url("#{$assets}/logos/INRS-logo-web-blanc-horizontal.png"),
-    url("#{$assets}/logos/Genovalia_Logo_Blanc.png");
+    url("#{$assets}/logos/Genovalia_Logo_Blanc.png"),
+    url("#{$assets}/logos/biodiversite-quebec-logo.svg");
   background-repeat: no-repeat;
-  // INRS is 600x365, so at 130px tall it runs ~213px wide; Genovalia starts
-  // just past that for a ~24px gap.
-  background-position: left bottom, left 237px bottom;
-  background-size: auto 100%, auto 66%;
+  // INRS is 600x365, so at 130px tall it runs ~213px wide; Genovalia (66%
+  // tall, 1782x674) starts just past that for a ~24px gap, and Biodiversité
+  // Québec (66% tall, 760x275) starts past Genovalia for the same gap.
+  background-position: left bottom, left 237px bottom, left 488px bottom;
+  background-size: auto 100%, auto 66%, auto 66%;
 }
 
 .reveal .slides > section#title-slide h1.title {
@@ -173,6 +192,11 @@ $assets: "../../../../../assets";
 
 // Callout — brand colors throughout; Quarto ships a blue header + blue icon
 // that clashed with the sanguine body tint.
+// Quarto's compiled theme sets .callout { font-size: 0.7em }; override back
+// to body text size for every callout type, not just callout-note.
+.reveal .callout {
+  font-size: 1em;
+}
 .reveal div.callout.callout-note {
   border-left: 4px solid $sanguine;
   border-radius: 0 6px 6px 0;
@@ -189,6 +213,45 @@ $assets: "../../../../../assets";
 }
 .reveal div.callout.callout-note .callout-icon-container {
   display: none;
+}
+
+// Figure captions match the callout body size (both now body text size) and
+// are centered under the image.
+.reveal figure > figcaption,
+.reveal .figure-caption {
+  font-size: 1em;
+  text-align: center;
+}
+
+// Reveal's r-stretch (auto-applied to a sole full-slide image) scales by
+// available height and can push wide/short diagrams past the slide's
+// width even though the markdown asked for width: 100%. Cap it back.
+.reveal .slide img.r-stretch {
+  max-width: 100%;
+}
+
+// Quarto's compiled theme ships `.columns{display:initial;gap:initial}`,
+// which resets `display` to its CSS-spec initial value (inline, not
+// block) and clobbers Quarto's own `.columns{display:flex}` from the
+// inline pandoc styles earlier in <head> (same specificity, later wins).
+// An inline .columns with two inline-block .column children only stays
+// side-by-side when they happen to fit on one "line" -- with wider
+// content (e.g. two images) the second wraps below the first, off the
+// bottom of the slide. Restore flex with higher specificity.
+.reveal .slide .columns {
+  display: flex;
+  gap: 1.5em;
+}
+
+// Center every figure (chart, diagram, image) regardless of how it's
+// wrapped — a plain markdown image without alt text/caption skips Quarto's
+// own .quarto-figure-center div, and an image inside a .column defaults to
+// the column's left edge.
+.reveal .slide img,
+.reveal .slide svg {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 // Footer / slide number
@@ -212,9 +275,108 @@ $assets: "../../../../../assets";
 // Code
 .reveal pre code { border-radius: 8px; }
 
+// Quarto's compiled theme sets inline `code` to mint (#E3FAEC) — legible on
+// the dark code-block background, but nearly invisible against the light
+// body background outside a code block. Give inline code its own dark,
+// high-contrast style with a subtle pill background.
+.reveal code:not(pre code) {
+  color: $mauve;
+  background: rgba(86, 60, 154, 0.12);
+  padding: 0.08em 0.35em;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
 // Blockquotes
 .reveal blockquote {
   border-left: 4px solid $violet;
   color: $mauve-mid;
   font-style: italic;
+}
+
+// Mermaid diagrams ------------------------------------------------------
+// The palette comes from the $mermaid-* variables in the defaults section;
+// what's left here is everything Quarto's themeCSS gets wrong for this deck.
+// All of these outrank the <style> mermaid injects inside each SVG, which
+// only ever uses single-class selectors.
+
+// Node text. Two things fight us here: the deck's own `.reveal strong` rule
+// paints the bold first line of every node mauve-on-mauve, and mermaid's
+// scoped `#mermaid-N span{color:#333}` catches anything .nodeLabel misses.
+// Titles white, supporting lines mint — the same pairing the hand-built
+// schema-integrateur.svg uses on the identical mauve-mid fill.
+.reveal .mermaid-js .node .nodeLabel,
+.reveal .mermaid-js .node .nodeLabel p {
+  color: $mint;
+}
+.reveal .mermaid-js .node .nodeLabel strong,
+.reveal .mermaid-js .node .nodeLabel b {
+  color: #fff;
+}
+
+// Cluster titles and edge labels sit on the slide background, not on a node,
+// so the white node-label color would make them invisible. Their background
+// needs !important: mermaid scopes its own rules by SVG id (`#mermaid-1
+// .edgeLabel{...}`), which outranks any plain class selector here, and the
+// color it picks is primaryColor hue-rotated — our mauve comes back pink.
+.reveal .mermaid-js .cluster span,
+.reveal .mermaid-js .cluster div,
+.reveal .mermaid-js .cluster p,
+.reveal .mermaid-js .edgeLabel,
+.reveal .mermaid-js .edgeLabel span,
+.reveal .mermaid-js .edgeLabel div,
+.reveal .mermaid-js .edgeLabel p,
+.reveal .mermaid-js .labelBkg {
+  color: $mauve;
+  background: transparent !important;
+  background-color: transparent !important;
+  font-family: "Overpass", sans-serif;
+  font-weight: 600;
+}
+.reveal .mermaid-js .edgeLabel rect {
+  fill: transparent !important;
+}
+// Cluster titles read as section headings, so give them the sanguine accent
+// the deck uses for every other heading rule.
+.reveal .mermaid-js .cluster span,
+.reveal .mermaid-js .cluster p {
+  color: $sanguine;
+  font-weight: 700;
+}
+// Mermaid sizes each label's <foreignObject> from text measured before the
+// Overpass webfont lands — cluster titles get a box ~half the width they
+// actually need and lose their last characters ("Pratiques adapté…"). Node
+// labels already escape this via Quarto's `.label foreignObject` rule, but
+// `.cluster-label` isn't covered by it. The inner div is a centered
+// table-cell, so the overflow stays symmetric and the title stays centered.
+.reveal .mermaid-js .cluster-label foreignObject,
+.reveal .mermaid-js .cluster-label foreignObject > div {
+  overflow: visible;
+}
+
+// Logos used as node labels. Mermaid writes `min-width: 80px; max-width: 80px`
+// inline on every image inside a label, so the width is pinned at 80px from
+// both sides and no width attribute can escape it — only !important outranks
+// an inline style. Unclamp it here and let each diagram's own width/height
+// attributes set the size, so the dimensions stay next to the logo in the qmd.
+.reveal .mermaid-js img {
+  min-width: 0 !important;
+  max-width: none !important;
+  max-height: none !important;
+  margin: 0;
+}
+
+// Softer node corners and a little depth, matching the deck's rounded cards.
+.reveal .mermaid-js .node rect,
+.reveal .mermaid-js .node polygon {
+  rx: 10;
+  ry: 10;
+  stroke-width: 0;
+}
+
+// Thicker, brand-colored connectors — Quarto's default hairline grey reads as
+// an artifact at projection size.
+.reveal .mermaid-js .edgePath .path,
+.reveal .mermaid-js .flowchart-link {
+  stroke-width: 2.5px;
 }
