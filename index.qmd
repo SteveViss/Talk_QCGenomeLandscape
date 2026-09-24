@@ -75,16 +75,18 @@ Sur 22 678 espèces d'Atlas couvertes : 6 345 vues par les deux, 2 055 eDNA seul
 
 ## Les 2 055 espèces eDNA seulement {.smaller}
 
-Dans les 1 686 espèces « eDNA seulement » sont principalement des espèces, ça se concentre dans 5 ordres qui font ~97 % du total :
+Ça se concentre dans 5 ordres d'insectes (1 686 espèces, 80 % du total) + les champignons :
 
 | Ordre | Espèces | % |
 |---|---:|---:|
-| Diptera (mouches) | 573 | 34,0 % |
-| Hymenoptera (guêpes, abeilles, fourmis) | 350 | 20,8 % |
-| Lepidoptera (papillons) | 300 | 17,8 % |
-| Hemiptera (punaises) | 238 | 14,1 % |
-| Coleoptera (coléoptères) | 181 | 10,7 % |
-| (6 autres ordres, résiduel) | 44 | 2,6 % |
+| Diptera (mouches) | 573 | 27,9 % |
+| Hymenoptera (guêpes, abeilles, fourmis) | 350 | 17,0 % |
+| Lepidoptera (papillons) | 300 | 14,6 % |
+| Hemiptera (punaises) | 238 | 11,6 % |
+| Coleoptera (coléoptères) | 181 | 8,8 % |
+| Agaricales (champignons) | 153 | 7,4 % |
+| Araneae (araignées) | 49 | 2,4 % |
+| (autres ordres, résiduel) | 211 | 10,3 % |
 
 Ce sont typiquement des groupes riches en espèces, petits/discrets et coûteux à identifier morphologiquement.
 
